@@ -1,0 +1,13 @@
+{
+  "conf": {},
+  "routes": [
+    {
+      "routePath": "/:default*",
+      "mountPath": "/",
+      "method": "",
+      "module": [
+        "[[default]].js:onRequest"
+      ]
+    }
+  ]
+}
