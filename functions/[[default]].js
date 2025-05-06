@@ -5,7 +5,7 @@
 
 export async function onRequest({ request }) {
   // 源站地址，替换为您的实际源站
-  const ORIGIN = "https://your-origin-website.com";
+  const ORIGIN = "http://166.108.203.60:3000";
   
   // 获取请求URL的路径部分
   const url = new URL(request.url);
