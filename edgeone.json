@@ -1,0 +1,59 @@
+{
+  "caches": [
+    {
+      "source": "/*.(jpg|jpeg|png|gif|ico|svg|webp)",
+      "cacheTtl": 86400
+    },
+    {
+      "source": "/*.(css|js)",
+      "cacheTtl": 86400
+    },
+    {
+      "source": "/*.(woff|woff2|ttf|eot)",
+      "cacheTtl": 604800
+    },
+    {
+      "source": "/api/*",
+      "cacheTtl": 0
+    },
+    {
+      "source": "/assets/*",
+      "cacheTtl": 604800
+    }
+  ],
+  "headers": [
+    {
+      "source": "/*",
+      "headers": [
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+      ]
+    },
+    {
+      "source": "/*.(js|css|jpg|jpeg|png|gif|ico|svg|webp|woff|woff2|ttf|eot)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400" }
+      ]
+    }
+  ],
+  "rewrites": [
+    { 
+      "source": "/blog/*", 
+      "destination": "/blog-new/:splat" 
+    }
+  ],
+  "redirects": [
+    { 
+      "source": "/old-path", 
+      "destination": "/new-path", 
+      "statusCode": 301 
+    },
+    { 
+      "source": "/legacy/*", 
+      "destination": "/modern/:splat", 
+      "statusCode": 301 
+    }
+  ]
+}
