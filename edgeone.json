@@ -1,16 +1,12 @@
 {
   "caches": [
     {
-      "source": "/*.(jpg|jpeg|png|gif|ico|svg|webp)",
+      "source": "/images/*",
       "cacheTtl": 86400
     },
     {
-      "source": "/*.(css|js)",
+      "source": "/static/*",
       "cacheTtl": 86400
-    },
-    {
-      "source": "/*.(woff|woff2|ttf|eot)",
-      "cacheTtl": 604800
     },
     {
       "source": "/api/*",
@@ -32,7 +28,7 @@
       ]
     },
     {
-      "source": "/*.(js|css|jpg|jpeg|png|gif|ico|svg|webp|woff|woff2|ttf|eot)",
+      "source": "/assets/*",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=86400" }
       ]

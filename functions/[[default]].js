@@ -87,6 +87,11 @@ export async function onRequest({ request }) {
       responseHeaders.set("cache-control", "public, max-age=3600");
     }
     
+    // 允许访问预览页面，解决401问题
+    responseHeaders.set("Access-Control-Allow-Origin", "*");
+    responseHeaders.set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+    responseHeaders.set("Access-Control-Allow-Headers", "Content-Type, Authorization");
+    
     // 返回响应给客户端
     return new Response(originResponse.body, {
       status: originResponse.status,
@@ -99,28 +104,47 @@ export async function onRequest({ request }) {
     
     // 返回自定义错误页面，不暴露源站信息
     return new Response(
-      `<html>
+      `<!DOCTYPE html>
+      <html>
         <head>
-          <title>服务暂时不可用</title>
+          <title>CDN反向代理</title>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
           <style>
-            body { font-family: sans-serif; text-align: center; padding: 50px; }
-            h1 { color: #333; }
-            .error-container { max-width: 500px; margin: 0 auto; }
+            body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; padding: 2rem; max-width: 800px; margin: 0 auto; }
+            h1 { color: #0078d4; }
+            .card { background: #f9f9f9; border-radius: 8px; padding: 20px; margin-top: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+            pre { background: #f1f1f1; padding: 10px; border-radius: 4px; overflow-x: auto; }
+            .info { color: #0078d4; }
           </style>
         </head>
         <body>
-          <div class="error-container">
-            <h1>服务暂时不可用</h1>
-            <p>我们的服务器正在维护中，请稍后再试。</p>
+          <h1>EdgeOne Pages CDN反向代理</h1>
+          <div class="card">
+            <h2>代理服务器状态</h2>
+            <p>CDN反向代理已成功部署，但源站连接失败。</p>
+            <p>错误信息: ${err.message}</p>
+            <p class="info">请检查源站地址设置是否正确，并确保源站可访问。</p>
+          </div>
+          <div class="card">
+            <h2>配置指南</h2>
+            <p>1. 请确保已正确配置源站地址</p>
+            <p>2. 如果您遇到401错误，可能需要:</p>
+            <ul>
+              <li>添加自定义域名并完成DNS配置</li>
+              <li>通过控制台的"预览"按钮获取最新的授权链接</li>
+              <li>确认项目的加速区域设置是否符合您的访问环境</li>
+            </ul>
+            <p><strong>源站设置:</strong> ${ORIGIN}</p>
           </div>
         </body>
       </html>`, 
       { 
-        status: 503,
+        status: 200,
         headers: {
           "content-type": "text/html; charset=UTF-8",
           "cache-control": "no-store",
-          "retry-after": "300"
+          "Access-Control-Allow-Origin": "*"
         }
       }
     );
