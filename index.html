@@ -1,79 +1,19 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EdgeOne Pages CDN 反向代理</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        h1 { color: #0078d4; }
-        .box {
-            background-color: white;
-            border-radius: 8px;
-            padding: 2rem;
-            margin: 2rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        .status {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            border-radius: 2rem;
-            font-weight: 500;
-            background-color: #e6f7ff;
-            color: #0078d4;
-        }
-        .feature {
-            margin-bottom: 1rem;
-        }
-        .feature h3 {
-            margin-bottom: 0.5rem;
-            color: #0078d4;
-        }
-    </style>
-</head>
-<body>
-    <h1>EdgeOne Pages CDN 反向代理</h1>
-    <p><span class="status">状态: 运行中</span></p>
-    
-    <div class="box">
-        <h2>反向代理服务</h2>
-        <p>此服务使用 EdgeOne Pages 作为 CDN 反向代理，可隐藏源站并提供全球加速。</p>
-        
-        <div class="feature">
-            <h3>✓ 全球加速</h3>
-            <p>利用腾讯云 EdgeOne 全球边缘网络，将请求分发到离用户最近的节点。</p>
-        </div>
-        
-        <div class="feature">
-            <h3>✓ 源站保护</h3>
-            <p>完全隐藏源站信息，降低被直接攻击的风险。</p>
-        </div>
-        
-        <div class="feature">
-            <h3>✓ 智能缓存</h3>
-            <p>根据资源类型设置最优缓存策略，减轻源站压力。</p>
-        </div>
-    </div>
-    
-    <div class="box">
-        <h2>API 测试</h2>
-        <p>您可以通过以下路径访问API:</p>
-        <ul>
-            <li><a href="/api/hello">/api/hello</a> - 测试API端点</li>
-            <li><a href="/api/status">/api/status</a> - 查看系统状态</li>
-        </ul>
-        <p>所有API请求将被代理到源站并返回结果。</p>
-    </div>
-
-    <footer style="margin-top: 2rem; text-align: center; color: #666;">
-        <p>Powered by EdgeOne Pages | CDN反向代理服务</p>
-    </footer>
-</body>
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta
+      name="description"
+      content="OpenAI 接口聚合管理，支持多种渠道包括 Azure，可用于二次分发管理 key，仅单可执行文件，已打包好 Docker 镜像，一键部署，开箱即用"
+    />
+    <title>New API</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/index.js"></script>
+  </body>
 </html>

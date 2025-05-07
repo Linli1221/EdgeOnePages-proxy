@@ -38,6 +38,14 @@
     { 
       "source": "/blog/*", 
       "destination": "/blog-new/:splat" 
+    },
+    {
+      "source": "/api/*",
+      "destination": "/api/:splat"
+    },
+    {
+      "source": "/((?!api|assets|static|images|.*\\.).*)$",
+      "destination": "/index.html"
     }
   ],
   "redirects": [
